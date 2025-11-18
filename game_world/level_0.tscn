@@ -47,8 +47,9 @@ sky = SubResource("Sky_om2l8")
 ambient_light_source = 3
 ambient_light_sky_contribution = 0.5
 adjustment_enabled = true
-adjustment_brightness = 1.5
-adjustment_contrast = 0.8
+adjustment_brightness = 1.4
+adjustment_contrast = 0.9
+adjustment_saturation = 1.2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hnt6s"]
 albedo_texture = ExtResource("11_2b4yp")
