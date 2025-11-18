@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://sieg4dkst1g0"]
+[gd_scene load_steps=23 format=3 uid="uid://sieg4dkst1g0"]
 
 [ext_resource type="Texture2D" uid="uid://bg6etgbllhn48" path="res://addons/textures/rocky_terrain_02_1k/rocky_terrain_02_diff_1k.png" id="1_b8hfu"]
 [ext_resource type="PackedScene" uid="uid://c5snqxgqbp4s1" path="res://characters/player/player.tscn" id="1_om2l8"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bmj44twx56wx5" path="res://assets/images/window2outside.jpg" id="12_2b4yp"]
 [ext_resource type="Texture2D" uid="uid://cleptnw3c3krd" path="res://assets/images/wall_picture.jpg" id="13_hnt6s"]
 [ext_resource type="Texture2D" uid="uid://dt82gshcl28d1" path="res://assets/images/grafiti.png" id="14_25jis"]
+[ext_resource type="Texture2D" uid="uid://cq41gmddo5nky" path="res://assets/images/window2inside.jpg" id="15_p1n33"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fry0m"]
 albedo_texture = ExtResource("1_b8hfu")
@@ -76,6 +77,19 @@ sky_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.031606436, 1.5628319, 13.1198635)
 
 [node name="House" parent="." instance=ExtResource("10_lldqc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.2411985)
+
+[node name="Table" parent="House" instance=ExtResource("10_oo23u")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.6245494, 0.52837396, -4.770829)
+
+[node name="Radio" parent="House" instance=ExtResource("11_lldqc")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -5.5503907, 1.2656311, -4.802225)
+
+[node name="BackgroundMusic" type="AudioStreamPlayer3D" parent="House/Radio"]
+transform = Transform3D(-4.3711387e-07, 0, 10, 0, 10, 0, -10, 0, -4.3711387e-07, -0.7415873, -12.656311, 0.31395856)
+stream = ExtResource("9_fry0m")
+volume_db = -25.0
+autoplay = true
 
 [node name="SpotLight3D" type="SpotLight3D" parent="House"]
 transform = Transform3D(1.9106855e-15, -1, -4.371139e-08, -4.371139e-08, -4.371139e-08, 1, -1, 0, -4.371139e-08, -5.050222, 6.4885583, -5)
@@ -102,17 +116,17 @@ texture = ExtResource("12_2b4yp")
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 4.0835047, 3.5563211, -7.2537403)
 texture = ExtResource("12_2b4yp")
 
-[node name="Table" parent="House" instance=ExtResource("10_oo23u")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.6245494, 0.52837396, -4.770829)
+[node name="Window3" type="Sprite3D" parent="House"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -3.349246, 8.5862255, -7.2537403)
+texture = ExtResource("12_2b4yp")
 
-[node name="Radio" parent="House" instance=ExtResource("11_lldqc")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -5.5503907, 1.2656311, -4.802225)
+[node name="Window5" type="Sprite3D" parent="House"]
+transform = Transform3D(-1.7484556e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.7484556e-08, -7.36569, 8.5862255, 2.7745917)
+texture = ExtResource("12_2b4yp")
 
-[node name="BackgroundMusic" type="AudioStreamPlayer3D" parent="House/Radio"]
-transform = Transform3D(-4.3711387e-07, 0, 10, 0, 10, 0, -10, 0, -4.3711387e-07, -0.7415873, -12.656311, 0.31395856)
-stream = ExtResource("9_fry0m")
-volume_db = -25.0
-autoplay = true
+[node name="Window4" type="Sprite3D" parent="House"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 4.0835047, 8.5862255, -7.2537403)
+texture = ExtResource("12_2b4yp")
 
 [node name="WallPicture" type="Sprite3D" parent="House"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -2.911755, 2.8644786, 2.3417425)
@@ -122,3 +136,39 @@ texture = ExtResource("13_hnt6s")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9417973, -7.469513)
 flip_h = true
 texture = ExtResource("14_25jis")
+
+[node name="Window6" type="Sprite3D" parent="House"]
+transform = Transform3D(0.8, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.0068461895, 3.54886, 7.566431)
+texture = ExtResource("15_p1n33")
+
+[node name="Window9" type="Sprite3D" parent="House"]
+transform = Transform3D(-3.4969112e-08, 0, -0.4, 0, 0.4, 0, 0.8, 0, -1.7484556e-08, -7.6156154, 3.54886, 0.13800621)
+texture = ExtResource("15_p1n33")
+
+[node name="Window10" type="Sprite3D" parent="House"]
+transform = Transform3D(-3.4969112e-08, 0, -0.4, 0, 0.4, 0, 0.8, 0, -1.7484556e-08, -7.6156154, 8.033325, -3.310615)
+texture = ExtResource("15_p1n33")
+
+[node name="Window11" type="Sprite3D" parent="House"]
+transform = Transform3D(-3.4969112e-08, 0, -0.4, 0, 0.4, 0, 0.8, 0, -1.7484556e-08, -7.6156154, 8.033325, 3.631301)
+texture = ExtResource("15_p1n33")
+
+[node name="Window12" type="Sprite3D" parent="House"]
+transform = Transform3D(1.04907336e-07, 0, 0.4, 0, 0.4, 0, -0.8, 0, 5.2453668e-08, 7.472576, 3.54886, 0.1677885)
+texture = ExtResource("15_p1n33")
+
+[node name="Window13" type="Sprite3D" parent="House"]
+transform = Transform3D(1.04907336e-07, 0, 0.4, 0, 0.4, 0, -0.8, 0, 5.2453668e-08, 7.472576, 8.033325, 3.6164098)
+texture = ExtResource("15_p1n33")
+
+[node name="Window14" type="Sprite3D" parent="House"]
+transform = Transform3D(1.04907336e-07, 0, 0.4, 0, 0.4, 0, -0.8, 0, 5.2453668e-08, 7.472576, 8.033325, -3.3255062)
+texture = ExtResource("15_p1n33")
+
+[node name="Window7" type="Sprite3D" parent="House"]
+transform = Transform3D(0.8, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.8052423, 8.789118, 7.566431)
+texture = ExtResource("15_p1n33")
+
+[node name="Window8" type="Sprite3D" parent="House"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 5.3845863, 8.789118, 7.566431)
+texture = ExtResource("15_p1n33")

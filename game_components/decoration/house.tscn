@@ -22,43 +22,88 @@ data = PackedVector3Array(-7.5, 0.049999997, 7.5, 7.5, 0.049999997, 7.5, -7.5, -
 
 [node name="House" type="Node3D"]
 
-[node name="HousePlatform" type="MeshInstance3D" parent="."]
+[node name="HousePlatform1" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5173336, 0)
 material_override = SubResource("StandardMaterial3D_b33xk")
 mesh = SubResource("BoxMesh_qwvqi")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="HousePlatform"]
+[node name="StaticBody3D" type="StaticBody3D" parent="HousePlatform1"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HousePlatform/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HousePlatform1/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_4f17u")
 
-[node name="HouseRoofPlane" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.636137, 0)
+[node name="HousePlatform2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00063180923, 5.6253295, 0)
 material_override = SubResource("StandardMaterial3D_b33xk")
 mesh = SubResource("BoxMesh_qwvqi")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="HouseRoofPlane"]
+[node name="StaticBody3D" type="StaticBody3D" parent="HousePlatform2"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HouseRoofPlane/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HousePlatform2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_4f17u")
 
-[node name="HouseWall" parent="." instance=ExtResource("4_uqjdj")]
+[node name="HouseStairs" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.4330127, -0.35, 0, 0.25, 0.60621774, -5.998421, 3.0147429, 12.085521)
+material_override = SubResource("StandardMaterial3D_b33xk")
+mesh = SubResource("BoxMesh_qwvqi")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="HouseStairs"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HouseStairs/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4f17u")
+
+[node name="HouseWalls" parent="." instance=ExtResource("4_uqjdj")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -7.467517, 3.0894675, 0)
 
-[node name="HouseWall" parent="HouseWall" instance=ExtResource("4_uqjdj")]
+[node name="HouseWall" parent="HouseWalls" instance=ExtResource("4_uqjdj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.820568, 0, 0)
 
-[node name="HouseWall2" parent="HouseWall" instance=ExtResource("4_uqjdj")]
+[node name="HouseWall11" parent="HouseWalls" instance=ExtResource("4_uqjdj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00063180923, 5.1079965, -5.519496e-11)
+
+[node name="HouseWall2" parent="HouseWalls" instance=ExtResource("4_uqjdj")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -7.3955283, 0, 7.3571672)
 
-[node name="HouseWall3" parent="HouseWall" instance=ExtResource("4_uqjdj")]
+[node name="HouseWall5" parent="HouseWalls" instance=ExtResource("4_uqjdj")]
+transform = Transform3D(-4.371139e-08, 0, -0.8, 0, 1, 0, 1, 0, -3.4969112e-08, -5.974162, 0, -7.443659)
+
+[node name="HouseWall6" parent="HouseWalls" instance=ExtResource("4_uqjdj")]
+transform = Transform3D(-4.371139e-08, 0, -0.8, 0, 1, 0, 1, 0, -3.4969112e-08, -8.910619, 5.1246057, -7.4436584)
+
+[node name="HouseWall3" parent="HouseWalls" instance=ExtResource("4_uqjdj")]
 transform = Transform3D(-4.371139e-08, 0, -0.6, 0, 1, 0, 1, 0, -2.6226834e-08, -4.5724897, 0, 2.7614248)
 
-[node name="HouseWall4" parent="HouseWall" instance=ExtResource("4_uqjdj")]
+[node name="HouseWall4" parent="HouseWalls" instance=ExtResource("4_uqjdj")]
 transform = Transform3D(-4.371139e-08, 0, -0.6, 0, 1, 0, 1, 0, -2.6226834e-08, -4.3873777, 0, -2.2227767)
 
-[node name="HouseRoof" parent="." instance=ExtResource("5_7qw0v")]
-transform = Transform3D(1.8482394, -0.534944, 0, 0.7642057, 1.2937676, 0, 0, 0, 3, -4.425545, 6.87828, -0.0042853355)
+[node name="HouseWall7" parent="HouseWalls" instance=ExtResource("4_uqjdj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.821199, 5.1079965, -5.519496e-11)
 
-[node name="HouseRoof2" parent="." instance=ExtResource("5_7qw0v")]
-transform = Transform3D(-1.8482394, 0.53494394, 2.6226832e-07, 0.76420563, 1.2937675, 0, -1.6157821e-07, 4.6766285e-08, -2.9999998, 4.7755723, 6.87828, -0.0042853355)
+[node name="HouseWall8" parent="HouseWalls" instance=ExtResource("4_uqjdj")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -7.39616, 5.1079965, 7.3571672)
+
+[node name="HouseWall9" parent="HouseWalls" instance=ExtResource("4_uqjdj")]
+transform = Transform3D(-4.371139e-08, 0, -0.6, 0, 1, 0, 1, 0, -2.6226834e-08, -4.573121, 5.1079965, 2.7614248)
+
+[node name="HouseWall10" parent="HouseWalls" instance=ExtResource("4_uqjdj")]
+transform = Transform3D(-4.371139e-08, 0, -0.6, 0, 1, 0, 1, 0, -2.6226834e-08, -10.430201, 5.1079965, -2.2227771)
+
+[node name="HouseRoof" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.061733, 0)
+
+[node name="HouseRoofL" parent="HouseRoof" instance=ExtResource("5_7qw0v")]
+transform = Transform3D(1.8482394, -0.534944, 0, 0.7642057, 1.2937676, 0, 0, 0, 3, -4.425545, 2.013914, -0.0042853355)
+
+[node name="HouseRoofR" parent="HouseRoof" instance=ExtResource("5_7qw0v")]
+transform = Transform3D(-1.8482394, 0.53494394, 2.6226832e-07, 0.76420563, 1.2937675, 0, -1.6157821e-07, 4.6766285e-08, -2.9999998, 4.7755723, 2.013914, -0.0042853355)
+
+[node name="HouseRoofPlane" type="MeshInstance3D" parent="HouseRoof"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7717705, 0)
+material_override = SubResource("StandardMaterial3D_b33xk")
+mesh = SubResource("BoxMesh_qwvqi")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="HouseRoof/HouseRoofPlane"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HouseRoof/HouseRoofPlane/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4f17u")
