@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh2rwgstlsdw1"]
+
+[ext_resource type="PackedScene" uid="uid://bqagiaqipcpth" path="res://addons/models/game_components/decorations/radio.glb" id="1_co7ql"]
+
+[node name="Radio" instance=ExtResource("1_co7ql")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)

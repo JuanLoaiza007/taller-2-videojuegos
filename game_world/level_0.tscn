@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://sieg4dkst1g0"]
+[gd_scene load_steps=21 format=3 uid="uid://sieg4dkst1g0"]
 
 [ext_resource type="Texture2D" uid="uid://bg6etgbllhn48" path="res://addons/textures/rocky_terrain_02_1k/rocky_terrain_02_diff_1k.png" id="1_b8hfu"]
 [ext_resource type="PackedScene" uid="uid://c5snqxgqbp4s1" path="res://characters/player/player.tscn" id="1_om2l8"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://n6ejo0ylj3t7" path="res://addons/textures/wood_shutter_1k/wood_shutter_nor_gl_1k.png" id="7_fry0m"]
 [ext_resource type="Texture2D" uid="uid://cg01s7dxj5dsd" path="res://addons/textures/wood_shutter_1k/wood_shutter_rough_1k.png" id="8_oo23u"]
 [ext_resource type="AudioStream" uid="uid://dbilft73angx6" path="res://assets/audio/music/main_theme.mp3" id="9_fry0m"]
+[ext_resource type="PackedScene" uid="uid://biy3d6mq8me27" path="res://game_components/decoration/table.tscn" id="10_oo23u"]
+[ext_resource type="PackedScene" uid="uid://bh2rwgstlsdw1" path="res://game_components/decoration/radio.tscn" id="11_lldqc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fry0m"]
 albedo_texture = ExtResource("1_b8hfu")
@@ -81,7 +83,14 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6
 [node name="Player" parent="." instance=ExtResource("1_om2l8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.031606436, 1.5628319, 13.1198635)
 
-[node name="BackgroundMusic" type="AudioStreamPlayer3D" parent="."]
+[node name="Table" parent="." instance=ExtResource("10_oo23u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52837396, 0)
+
+[node name="Radio" parent="." instance=ExtResource("11_lldqc")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 0.031395853, 1.2656311, 0.07415873)
+
+[node name="BackgroundMusic" type="AudioStreamPlayer3D" parent="Radio"]
+transform = Transform3D(-4.3711387e-07, 0, 10, 0, 10, 0, -10, 0, -4.3711387e-07, -0.7415873, -12.656311, 0.31395856)
 stream = ExtResource("9_fry0m")
 volume_db = -25.0
 autoplay = true
