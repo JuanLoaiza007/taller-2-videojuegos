@@ -2,18 +2,30 @@ extends CharacterBody3D
 
 
 const SPEED = 5.0
+const RUN_SPEED = 10.0
 const JUMP_VELOCITY = 4.5
 const CAMERA_SENSIBILITY = 0.4
 
 @onready var camera = $CameraPivot
+var state_machine: PlayerStateMachine
 
 func _ready() -> void:
 	add_to_group("player")
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	state_machine = PlayerStateMachine.new()
+	add_child(state_machine)
+	state_machine.name = "StateMachine"
 
 func _physics_process(delta: float) -> void:
-	movement(delta)
+	var input_dir := Input.get_vector("KEY_A", "KEY_D", "KEY_W", "KEY_S")
+	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var is_moving = direction.length() > 0
+	var is_run_pressed = Input.is_action_pressed("KEY_SHIFT")
+	var was_falling = velocity.y < 0 and not is_on_floor()
+	movement(delta, direction, is_run_pressed)
 	move_and_slide()
+	var on_floor_now = is_on_floor()
+	state_machine.update_state(on_floor_now, velocity.y, is_moving, is_run_pressed, was_falling)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -21,8 +33,8 @@ func _input(event: InputEvent) -> void:
 		camera.rotate_x(deg_to_rad(-event.relative.y * CAMERA_SENSIBILITY)) # Y: on the screen vertical
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-20), deg_to_rad(45)) # Prevent complete flip
 
-func movement(delta: float) -> void:
-  	# Add the gravity.
+func movement(delta: float, direction: Vector3, is_run_pressed: bool) -> void:
+   	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -31,12 +43,12 @@ func movement(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector("KEY_A", "KEY_D", "KEY_W", "KEY_S")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var speed = SPEED
+	if is_run_pressed:
+		speed = RUN_SPEED
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * speed
+		velocity.z = direction.z * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
