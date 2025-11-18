@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://sieg4dkst1g0"]
+[gd_scene load_steps=22 format=3 uid="uid://sieg4dkst1g0"]
 
 [ext_resource type="Texture2D" uid="uid://bg6etgbllhn48" path="res://addons/textures/rocky_terrain_02_1k/rocky_terrain_02_diff_1k.png" id="1_b8hfu"]
 [ext_resource type="PackedScene" uid="uid://c5snqxgqbp4s1" path="res://characters/player/player.tscn" id="1_om2l8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dc46ec2kc1cpb" path="res://addons/textures/rocky_terrain_02_1k/rocky_terrain_02_rough_1k.png" id="4_3bp8t"]
 [ext_resource type="Texture2D" uid="uid://c41303mtyn58r" path="res://addons/textures/wood_shutter_1k/wood_shutter_diff_1k.png" id="6_3bp8t"]
 [ext_resource type="Texture2D" uid="uid://n6ejo0ylj3t7" path="res://addons/textures/wood_shutter_1k/wood_shutter_nor_gl_1k.png" id="7_fry0m"]
+[ext_resource type="Texture2D" uid="uid://cxwhg521u6it3" path="res://addons/environments/sunny_rose_garden_2k.hdr" id="8_2b4yp"]
 [ext_resource type="Texture2D" uid="uid://cg01s7dxj5dsd" path="res://addons/textures/wood_shutter_1k/wood_shutter_rough_1k.png" id="8_oo23u"]
 [ext_resource type="AudioStream" uid="uid://dbilft73angx6" path="res://assets/audio/music/main_theme.mp3" id="9_fry0m"]
 [ext_resource type="PackedScene" uid="uid://biy3d6mq8me27" path="res://game_components/decoration/table.tscn" id="10_oo23u"]
@@ -14,10 +15,10 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fry0m"]
 albedo_texture = ExtResource("1_b8hfu")
-roughness = 0.6
+roughness = 0.9
 roughness_texture = ExtResource("4_3bp8t")
 normal_enabled = true
-normal_scale = 3.0
+normal_scale = -10.0
 normal_texture = ExtResource("2_ncvyv")
 refraction_texture = ExtResource("3_vqo1u")
 uv1_scale = Vector3(0.3, 0.3, 0.3)
@@ -27,8 +28,8 @@ uv1_triplanar = true
 material = SubResource("StandardMaterial3D_fry0m")
 size = Vector3(30, 1, 30)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_b8hfu"]
-data = PackedVector3Array(-20, 0.5, 20, 20, 0.5, 20, -20, -0.5, 20, 20, 0.5, 20, 20, -0.5, 20, -20, -0.5, 20, 20, 0.5, -20, -20, 0.5, -20, 20, -0.5, -20, -20, 0.5, -20, -20, -0.5, -20, 20, -0.5, -20, 20, 0.5, 20, 20, 0.5, -20, 20, -0.5, 20, 20, 0.5, -20, 20, -0.5, -20, 20, -0.5, 20, -20, 0.5, -20, -20, 0.5, 20, -20, -0.5, -20, -20, 0.5, 20, -20, -0.5, 20, -20, -0.5, -20, 20, 0.5, 20, -20, 0.5, 20, 20, 0.5, -20, -20, 0.5, 20, -20, 0.5, -20, 20, 0.5, -20, -20, -0.5, 20, 20, -0.5, 20, -20, -0.5, -20, 20, -0.5, 20, 20, -0.5, -20, -20, -0.5, -20)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lldqc"]
+data = PackedVector3Array(-15, 0.5, 15, 15, 0.5, 15, -15, -0.5, 15, 15, 0.5, 15, 15, -0.5, 15, -15, -0.5, 15, 15, 0.5, -15, -15, 0.5, -15, 15, -0.5, -15, -15, 0.5, -15, -15, -0.5, -15, 15, -0.5, -15, 15, 0.5, 15, 15, 0.5, -15, 15, -0.5, 15, 15, 0.5, -15, 15, -0.5, -15, 15, -0.5, 15, -15, 0.5, -15, -15, 0.5, 15, -15, -0.5, -15, -15, 0.5, 15, -15, -0.5, 15, -15, -0.5, -15, 15, 0.5, 15, -15, 0.5, 15, 15, 0.5, -15, -15, 0.5, 15, -15, 0.5, -15, 15, 0.5, -15, -15, -0.5, 15, 15, -0.5, 15, -15, -0.5, -15, 15, -0.5, 15, 15, -0.5, -15, -15, -0.5, -15)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lldqc"]
 albedo_texture = ExtResource("6_3bp8t")
@@ -44,15 +45,21 @@ size = Vector3(15, 0.1, 15)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3bp8t"]
 data = PackedVector3Array(-7.5, 0.049999997, 7.5, 7.5, 0.049999997, 7.5, -7.5, -0.049999997, 7.5, 7.5, 0.049999997, 7.5, 7.5, -0.049999997, 7.5, -7.5, -0.049999997, 7.5, 7.5, 0.049999997, -7.5, -7.5, 0.049999997, -7.5, 7.5, -0.049999997, -7.5, -7.5, 0.049999997, -7.5, -7.5, -0.049999997, -7.5, 7.5, -0.049999997, -7.5, 7.5, 0.049999997, 7.5, 7.5, 0.049999997, -7.5, 7.5, -0.049999997, 7.5, 7.5, 0.049999997, -7.5, 7.5, -0.049999997, -7.5, 7.5, -0.049999997, 7.5, -7.5, 0.049999997, -7.5, -7.5, 0.049999997, 7.5, -7.5, -0.049999997, -7.5, -7.5, 0.049999997, 7.5, -7.5, -0.049999997, 7.5, -7.5, -0.049999997, -7.5, 7.5, 0.049999997, 7.5, -7.5, 0.049999997, 7.5, 7.5, 0.049999997, -7.5, -7.5, 0.049999997, 7.5, -7.5, 0.049999997, -7.5, 7.5, 0.049999997, -7.5, -7.5, -0.049999997, 7.5, 7.5, -0.049999997, 7.5, -7.5, -0.049999997, -7.5, 7.5, -0.049999997, 7.5, 7.5, -0.049999997, -7.5, -7.5, -0.049999997, -7.5)
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rmpoy"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hnt6s"]
+panorama = ExtResource("8_2b4yp")
+energy_multiplier = 1.5
 
 [sub_resource type="Sky" id="Sky_om2l8"]
-sky_material = SubResource("ProceduralSkyMaterial_rmpoy")
+sky_material = SubResource("PanoramaSkyMaterial_hnt6s")
 
 [sub_resource type="Environment" id="Environment_7vd3r"]
 background_mode = 2
 sky = SubResource("Sky_om2l8")
 ambient_light_source = 3
+ambient_light_sky_contribution = 0.2
+adjustment_enabled = true
+adjustment_brightness = 1.5
+adjustment_contrast = 0.8
 
 [node name="Level0" type="Node3D"]
 
@@ -62,7 +69,7 @@ mesh = SubResource("BoxMesh_rmpoy")
 [node name="StaticBody3D" type="StaticBody3D" parent="TerrainPlatform"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TerrainPlatform/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_b8hfu")
+shape = SubResource("ConcavePolygonShape3D_lldqc")
 
 [node name="HousePlatform" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5173336, 0)
