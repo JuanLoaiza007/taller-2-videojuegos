@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://cg0gueisreqcf"]
+
+[ext_resource type="Texture2D" uid="uid://c41303mtyn58r" path="res://addons/textures/wood_shutter_1k/wood_shutter_diff_1k.png" id="1_6v3tf"]
+[ext_resource type="Texture2D" uid="uid://n6ejo0ylj3t7" path="res://addons/textures/wood_shutter_1k/wood_shutter_nor_gl_1k.png" id="2_s5kcy"]
+[ext_resource type="Texture2D" uid="uid://cg01s7dxj5dsd" path="res://addons/textures/wood_shutter_1k/wood_shutter_rough_1k.png" id="3_jy7mi"]
+[ext_resource type="PackedScene" uid="uid://cwf14bncfhoaf" path="res://game_components/decoration/house_wall.tscn" id="4_uqjdj"]
+[ext_resource type="PackedScene" uid="uid://c2vewrv8g3t1t" path="res://game_components/decoration/house_roof.tscn" id="5_7qw0v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b33xk"]
+albedo_texture = ExtResource("1_6v3tf")
+roughness_texture = ExtResource("3_jy7mi")
+normal_enabled = true
+normal_texture = ExtResource("2_s5kcy")
+uv1_scale = Vector3(0.4, 0.4, 0.4)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_qwvqi"]
+size = Vector3(15, 0.1, 15)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4f17u"]
+data = PackedVector3Array(-7.5, 0.049999997, 7.5, 7.5, 0.049999997, 7.5, -7.5, -0.049999997, 7.5, 7.5, 0.049999997, 7.5, 7.5, -0.049999997, 7.5, -7.5, -0.049999997, 7.5, 7.5, 0.049999997, -7.5, -7.5, 0.049999997, -7.5, 7.5, -0.049999997, -7.5, -7.5, 0.049999997, -7.5, -7.5, -0.049999997, -7.5, 7.5, -0.049999997, -7.5, 7.5, 0.049999997, 7.5, 7.5, 0.049999997, -7.5, 7.5, -0.049999997, 7.5, 7.5, 0.049999997, -7.5, 7.5, -0.049999997, -7.5, 7.5, -0.049999997, 7.5, -7.5, 0.049999997, -7.5, -7.5, 0.049999997, 7.5, -7.5, -0.049999997, -7.5, -7.5, 0.049999997, 7.5, -7.5, -0.049999997, 7.5, -7.5, -0.049999997, -7.5, 7.5, 0.049999997, 7.5, -7.5, 0.049999997, 7.5, 7.5, 0.049999997, -7.5, -7.5, 0.049999997, 7.5, -7.5, 0.049999997, -7.5, 7.5, 0.049999997, -7.5, -7.5, -0.049999997, 7.5, 7.5, -0.049999997, 7.5, -7.5, -0.049999997, -7.5, 7.5, -0.049999997, 7.5, 7.5, -0.049999997, -7.5, -7.5, -0.049999997, -7.5)
+
+[node name="House" type="Node3D"]
+
+[node name="HousePlatform" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5173336, 0)
+material_override = SubResource("StandardMaterial3D_b33xk")
+mesh = SubResource("BoxMesh_qwvqi")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="HousePlatform"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HousePlatform/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4f17u")
+
+[node name="HouseRoofPlane" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.636137, 0)
+material_override = SubResource("StandardMaterial3D_b33xk")
+mesh = SubResource("BoxMesh_qwvqi")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="HouseRoofPlane"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HouseRoofPlane/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4f17u")
+
+[node name="HouseWall" parent="." instance=ExtResource("4_uqjdj")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -7.467517, 3.0894675, 0)
+
+[node name="HouseWall" parent="HouseWall" instance=ExtResource("4_uqjdj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.820568, 0, 0)
+
+[node name="HouseWall2" parent="HouseWall" instance=ExtResource("4_uqjdj")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -7.3955283, 0, 7.3571672)
+
+[node name="HouseWall3" parent="HouseWall" instance=ExtResource("4_uqjdj")]
+transform = Transform3D(-4.371139e-08, 0, -0.6, 0, 1, 0, 1, 0, -2.6226834e-08, -4.5724897, 0, 2.7614248)
+
+[node name="HouseWall4" parent="HouseWall" instance=ExtResource("4_uqjdj")]
+transform = Transform3D(-4.371139e-08, 0, -0.6, 0, 1, 0, 1, 0, -2.6226834e-08, -4.3873777, 0, -2.2227767)
+
+[node name="HouseRoof" parent="." instance=ExtResource("5_7qw0v")]
+transform = Transform3D(1.8482394, -0.534944, 0, 0.7642057, 1.2937676, 0, 0, 0, 3, -4.425545, 6.87828, -0.0042853355)
+
+[node name="HouseRoof2" parent="." instance=ExtResource("5_7qw0v")]
+transform = Transform3D(-1.8482394, 0.53494394, 2.6226832e-07, 0.76420563, 1.2937675, 0, -1.6157821e-07, 4.6766285e-08, -2.9999998, 4.7755723, 6.87828, -0.0042853355)

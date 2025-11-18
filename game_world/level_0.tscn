@@ -1,15 +1,13 @@
-[gd_scene load_steps=22 format=3 uid="uid://sieg4dkst1g0"]
+[gd_scene load_steps=17 format=3 uid="uid://sieg4dkst1g0"]
 
 [ext_resource type="Texture2D" uid="uid://bg6etgbllhn48" path="res://addons/textures/rocky_terrain_02_1k/rocky_terrain_02_diff_1k.png" id="1_b8hfu"]
 [ext_resource type="PackedScene" uid="uid://c5snqxgqbp4s1" path="res://characters/player/player.tscn" id="1_om2l8"]
 [ext_resource type="Texture2D" uid="uid://d4kyguhntn4a3" path="res://addons/textures/rocky_terrain_02_1k/rocky_terrain_02_nor_gl_1k.png" id="2_ncvyv"]
 [ext_resource type="Texture2D" uid="uid://ddt2vkwyv40a6" path="res://addons/textures/rocky_terrain_02_1k/rocky_terrain_02_disp_1k.png" id="3_vqo1u"]
 [ext_resource type="Texture2D" uid="uid://dc46ec2kc1cpb" path="res://addons/textures/rocky_terrain_02_1k/rocky_terrain_02_rough_1k.png" id="4_3bp8t"]
-[ext_resource type="Texture2D" uid="uid://c41303mtyn58r" path="res://addons/textures/wood_shutter_1k/wood_shutter_diff_1k.png" id="6_3bp8t"]
-[ext_resource type="Texture2D" uid="uid://n6ejo0ylj3t7" path="res://addons/textures/wood_shutter_1k/wood_shutter_nor_gl_1k.png" id="7_fry0m"]
 [ext_resource type="Texture2D" uid="uid://cxwhg521u6it3" path="res://addons/environments/sunny_rose_garden_2k.hdr" id="8_2b4yp"]
-[ext_resource type="Texture2D" uid="uid://cg01s7dxj5dsd" path="res://addons/textures/wood_shutter_1k/wood_shutter_rough_1k.png" id="8_oo23u"]
 [ext_resource type="AudioStream" uid="uid://dbilft73angx6" path="res://assets/audio/music/main_theme.mp3" id="9_fry0m"]
+[ext_resource type="PackedScene" uid="uid://cg0gueisreqcf" path="res://game_components/decoration/house.tscn" id="10_lldqc"]
 [ext_resource type="PackedScene" uid="uid://biy3d6mq8me27" path="res://game_components/decoration/table.tscn" id="10_oo23u"]
 [ext_resource type="PackedScene" uid="uid://bh2rwgstlsdw1" path="res://game_components/decoration/radio.tscn" id="11_lldqc"]
 
@@ -31,20 +29,6 @@ size = Vector3(30, 1, 30)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lldqc"]
 data = PackedVector3Array(-15, 0.5, 15, 15, 0.5, 15, -15, -0.5, 15, 15, 0.5, 15, 15, -0.5, 15, -15, -0.5, 15, 15, 0.5, -15, -15, 0.5, -15, 15, -0.5, -15, -15, 0.5, -15, -15, -0.5, -15, 15, -0.5, -15, 15, 0.5, 15, 15, 0.5, -15, 15, -0.5, 15, 15, 0.5, -15, 15, -0.5, -15, 15, -0.5, 15, -15, 0.5, -15, -15, 0.5, 15, -15, -0.5, -15, -15, 0.5, 15, -15, -0.5, 15, -15, -0.5, -15, 15, 0.5, 15, -15, 0.5, 15, 15, 0.5, -15, -15, 0.5, 15, -15, 0.5, -15, 15, 0.5, -15, -15, -0.5, 15, 15, -0.5, 15, -15, -0.5, -15, 15, -0.5, 15, 15, -0.5, -15, -15, -0.5, -15)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lldqc"]
-albedo_texture = ExtResource("6_3bp8t")
-roughness_texture = ExtResource("8_oo23u")
-normal_enabled = true
-normal_texture = ExtResource("7_fry0m")
-uv1_scale = Vector3(0.4, 0.4, 0.4)
-uv1_triplanar = true
-
-[sub_resource type="BoxMesh" id="BoxMesh_2b4yp"]
-size = Vector3(15, 0.1, 15)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3bp8t"]
-data = PackedVector3Array(-7.5, 0.049999997, 7.5, 7.5, 0.049999997, 7.5, -7.5, -0.049999997, 7.5, 7.5, 0.049999997, 7.5, 7.5, -0.049999997, 7.5, -7.5, -0.049999997, 7.5, 7.5, 0.049999997, -7.5, -7.5, 0.049999997, -7.5, 7.5, -0.049999997, -7.5, -7.5, 0.049999997, -7.5, -7.5, -0.049999997, -7.5, 7.5, -0.049999997, -7.5, 7.5, 0.049999997, 7.5, 7.5, 0.049999997, -7.5, 7.5, -0.049999997, 7.5, 7.5, 0.049999997, -7.5, 7.5, -0.049999997, -7.5, 7.5, -0.049999997, 7.5, -7.5, 0.049999997, -7.5, -7.5, 0.049999997, 7.5, -7.5, -0.049999997, -7.5, -7.5, 0.049999997, 7.5, -7.5, -0.049999997, 7.5, -7.5, -0.049999997, -7.5, 7.5, 0.049999997, 7.5, -7.5, 0.049999997, 7.5, 7.5, 0.049999997, -7.5, -7.5, 0.049999997, 7.5, -7.5, 0.049999997, -7.5, 7.5, 0.049999997, -7.5, -7.5, -0.049999997, 7.5, 7.5, -0.049999997, 7.5, -7.5, -0.049999997, -7.5, 7.5, -0.049999997, 7.5, 7.5, -0.049999997, -7.5, -7.5, -0.049999997, -7.5)
-
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hnt6s"]
 panorama = ExtResource("8_2b4yp")
 energy_multiplier = 1.5
@@ -54,9 +38,10 @@ sky_material = SubResource("PanoramaSkyMaterial_hnt6s")
 
 [sub_resource type="Environment" id="Environment_7vd3r"]
 background_mode = 2
+background_energy_multiplier = 0.6
 sky = SubResource("Sky_om2l8")
 ambient_light_source = 3
-ambient_light_sky_contribution = 0.2
+ambient_light_sky_contribution = 0.5
 adjustment_enabled = true
 adjustment_brightness = 1.5
 adjustment_contrast = 0.8
@@ -71,33 +56,39 @@ mesh = SubResource("BoxMesh_rmpoy")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TerrainPlatform/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_lldqc")
 
-[node name="HousePlatform" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5173336, 0)
-material_override = SubResource("StandardMaterial3D_lldqc")
-mesh = SubResource("BoxMesh_2b4yp")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="HousePlatform"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HousePlatform/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_3bp8t")
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7vd3r")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6.664656, 0)
+light_energy = 0.8
+sky_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("1_om2l8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.031606436, 1.5628319, 13.1198635)
 
 [node name="Table" parent="." instance=ExtResource("10_oo23u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52837396, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.6245494, 0.52837396, -4.770829)
 
 [node name="Radio" parent="." instance=ExtResource("11_lldqc")]
-transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 0.031395853, 1.2656311, 0.07415873)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -5.5503907, 1.2656311, -4.802225)
 
 [node name="BackgroundMusic" type="AudioStreamPlayer3D" parent="Radio"]
 transform = Transform3D(-4.3711387e-07, 0, 10, 0, 10, 0, -10, 0, -4.3711387e-07, -0.7415873, -12.656311, 0.31395856)
 stream = ExtResource("9_fry0m")
 volume_db = -25.0
 autoplay = true
+
+[node name="House" parent="." instance=ExtResource("10_lldqc")]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1.9106855e-15, -1, -4.371139e-08, -4.371139e-08, -4.371139e-08, 1, -1, 0, -4.371139e-08, -5.050222, 6.4885583, -5)
+spot_range = 10.41
+spot_attenuation = -0.75
+spot_angle = 20.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.8456774, 2.7600102, -0.2464273)
+spot_range = 4000.0
+spot_attenuation = 0.6
+spot_angle = 12.0

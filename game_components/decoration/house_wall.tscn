@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://cwf14bncfhoaf"]
+
+[ext_resource type="Texture2D" uid="uid://bahlf3dwwtqyd" path="res://addons/textures/red_brick_1k/red_brick_diff_1k.png" id="1_arm0u"]
+[ext_resource type="Texture2D" uid="uid://erfwmvi4c8py" path="res://addons/textures/red_brick_1k/red_brick_nor_gl_1k.png" id="2_y76yy"]
+[ext_resource type="Texture2D" uid="uid://g0uprlqakkxg" path="res://addons/textures/red_brick_1k/red_brick_rough_1k.png" id="3_4n1nx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_acajs"]
+albedo_texture = ExtResource("1_arm0u")
+roughness = 0.7
+roughness_texture = ExtResource("3_4n1nx")
+normal_enabled = true
+normal_texture = ExtResource("2_y76yy")
+uv1_scale = Vector3(0.4, 0.4, 0.4)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_bl8b3"]
+size = Vector3(0.2, 5, 15)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_arm0u"]
+data = PackedVector3Array(-0.099999994, 2.5, 7.5, 0.099999994, 2.5, 7.5, -0.099999994, -2.5, 7.5, 0.099999994, 2.5, 7.5, 0.099999994, -2.5, 7.5, -0.099999994, -2.5, 7.5, 0.099999994, 2.5, -7.5, -0.099999994, 2.5, -7.5, 0.099999994, -2.5, -7.5, -0.099999994, 2.5, -7.5, -0.099999994, -2.5, -7.5, 0.099999994, -2.5, -7.5, 0.099999994, 2.5, 7.5, 0.099999994, 2.5, -7.5, 0.099999994, -2.5, 7.5, 0.099999994, 2.5, -7.5, 0.099999994, -2.5, -7.5, 0.099999994, -2.5, 7.5, -0.099999994, 2.5, -7.5, -0.099999994, 2.5, 7.5, -0.099999994, -2.5, -7.5, -0.099999994, 2.5, 7.5, -0.099999994, -2.5, 7.5, -0.099999994, -2.5, -7.5, 0.099999994, 2.5, 7.5, -0.099999994, 2.5, 7.5, 0.099999994, 2.5, -7.5, -0.099999994, 2.5, 7.5, -0.099999994, 2.5, -7.5, 0.099999994, 2.5, -7.5, -0.099999994, -2.5, 7.5, 0.099999994, -2.5, 7.5, -0.099999994, -2.5, -7.5, 0.099999994, -2.5, 7.5, 0.099999994, -2.5, -7.5, -0.099999994, -2.5, -7.5)
+
+[node name="HouseWall" type="Node3D"]
+
+[node name="WallLeft" type="MeshInstance3D" parent="."]
+material_overlay = SubResource("StandardMaterial3D_acajs")
+mesh = SubResource("BoxMesh_bl8b3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WallLeft"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallLeft/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_arm0u")
