@@ -10,6 +10,15 @@ enum State {
 	FALLING_TO_LANDING
 }
 
+var animation_names = {
+	State.IDLE: "IDLE",
+	State.WALKING: "WALKING",
+	State.RUNNING: "RUNNING",
+	State.JUMPING_UP: "JUMPING UP",
+	State.FALLING_IDLE: "FALLING IDLE",
+	State.FALLING_TO_LANDING: "FALLING TO LANDING"
+}
+
 var current_state: State = State.IDLE
 
 @onready var animation_player: AnimationPlayer = get_parent().get_node("AnimationPlayer")
@@ -36,5 +45,5 @@ func update_state(on_floor: bool, velocity_y: float, is_moving: bool, is_run_pre
 	if new_state != current_state:
 		current_state = new_state
 		print("Estado actual: ", State.keys()[current_state])
-		var anim_name = State.keys()[current_state].replace("_", " ")
+		var anim_name = animation_names[new_state]
 		animation_player.play(anim_name, 0.2)
