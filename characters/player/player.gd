@@ -7,7 +7,11 @@ const JUMP_VELOCITY = 4.5
 const CAMERA_SENSIBILITY = 0.4
 
 @onready var camera = $CameraPivot
+@onready var foot_raycast = $FootRayCast
+@onready var footsteps_audio = $FootstepsAudio
 var state_machine: PlayerStateMachine
+@onready var grass_sound = load("res://assets/audio/sfx/grass-footsteps-6265.mp3")
+@onready var concrete_sound = load("res://assets/audio/sfx/concrete-footsteps-6752.mp3")
 
 func _ready() -> void:
 	add_to_group("player")
@@ -26,6 +30,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	var on_floor_now = is_on_floor()
 	state_machine.update_state(on_floor_now, velocity.y, is_moving, is_run_pressed, was_falling)
+	update_footsteps_sound()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -52,3 +57,36 @@ func movement(delta: float, direction: Vector3, is_run_pressed: bool) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+
+func update_footsteps_sound() -> void:
+	foot_raycast.force_raycast_update()
+	var collider = foot_raycast.get_collider()
+	var current_surface = ""
+	if collider:
+		var parent = collider.get_parent()
+		if parent and parent.name == "TerrainPlatform":
+			current_surface = "grass"
+		elif parent and parent.name == "HousePlatform":
+			current_surface = "concrete"
+	var pitch = 1.0
+	if state_machine.current_state == PlayerStateMachine.State.WALKING:
+		pitch = 1.2
+	elif state_machine.current_state == PlayerStateMachine.State.RUNNING:
+		pitch = 1.8
+	if (state_machine.current_state == PlayerStateMachine.State.WALKING or state_machine.current_state == PlayerStateMachine.State.RUNNING) and is_on_floor():
+		if current_surface == "grass":
+			if footsteps_audio.stream != grass_sound:
+				footsteps_audio.stream = grass_sound
+				footsteps_audio.stream.loop = true
+			footsteps_audio.pitch_scale = pitch
+			if not footsteps_audio.playing:
+				footsteps_audio.play()
+		elif current_surface == "concrete":
+			if footsteps_audio.stream != concrete_sound:
+				footsteps_audio.stream = concrete_sound
+				footsteps_audio.stream.loop = true
+			footsteps_audio.pitch_scale = pitch
+			if not footsteps_audio.playing:
+				footsteps_audio.play()
+	else:
+		footsteps_audio.stop()
