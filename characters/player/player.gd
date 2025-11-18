@@ -5,17 +5,20 @@ const SPEED = 5.0
 const RUN_SPEED = 10.0
 const JUMP_VELOCITY = 4.5
 const CAMERA_SENSIBILITY = 0.4
+const FALL_DEATH_HEIGHT = -20.0
 
 @onready var camera = $CameraPivot
 @onready var foot_raycast = $FootRayCast
 @onready var footsteps_audio = $FootstepsAudio
 var state_machine: PlayerStateMachine
+var initial_position: Vector3
 @onready var grass_sound = load("res://assets/audio/sfx/grass-footsteps-6265.mp3")
 @onready var concrete_sound = load("res://assets/audio/sfx/concrete-footsteps-6752.mp3")
 
 func _ready() -> void:
 	add_to_group("player")
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	initial_position = global_position
 	state_machine = PlayerStateMachine.new()
 	add_child(state_machine)
 	state_machine.name = "StateMachine"
@@ -31,6 +34,10 @@ func _physics_process(delta: float) -> void:
 	var on_floor_now = is_on_floor()
 	state_machine.update_state(on_floor_now, velocity.y, is_moving, is_run_pressed, was_falling)
 	update_footsteps_sound()
+	
+	if global_position.y < FALL_DEATH_HEIGHT:
+		global_position = initial_position + Vector3(0, 10, 0)
+		velocity = Vector3.ZERO
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
