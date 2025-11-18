@@ -1,5 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://sieg4dkst1g0"]
+[gd_scene load_steps=24 format=3 uid="uid://sieg4dkst1g0"]
 
+[ext_resource type="Script" uid="uid://b5ugm7xwf7uny" path="res://game_world/level_0.gd" id="1_070sx"]
 [ext_resource type="Texture2D" uid="uid://bg6etgbllhn48" path="res://addons/textures/rocky_terrain_02_1k/rocky_terrain_02_diff_1k.png" id="1_b8hfu"]
 [ext_resource type="PackedScene" uid="uid://c5snqxgqbp4s1" path="res://characters/player/player.tscn" id="1_om2l8"]
 [ext_resource type="Texture2D" uid="uid://d4kyguhntn4a3" path="res://addons/textures/rocky_terrain_02_1k/rocky_terrain_02_nor_gl_1k.png" id="2_ncvyv"]
@@ -56,6 +57,7 @@ adjustment_saturation = 1.2
 albedo_texture = ExtResource("11_2b4yp")
 
 [node name="Level0" type="Node3D"]
+script = ExtResource("1_070sx")
 
 [node name="TerrainPlatform" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_rmpoy")

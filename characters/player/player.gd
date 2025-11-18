@@ -70,16 +70,15 @@ func update_footsteps_sound() -> void:
 	var collider = foot_raycast.get_collider()
 	var current_surface = ""
 	if collider:
-		var parent = collider.get_parent()
-		if parent and parent.name == "TerrainPlatform":
-			current_surface = "grass"
-		elif parent and parent.name == "HousePlatform":
+		if collider.is_in_group("concrete_surface"):
 			current_surface = "concrete"
+		elif collider.is_in_group("grass_surface"):
+			current_surface = "grass"
 	var pitch = 1.0
 	if state_machine.current_state == PlayerStateMachine.State.WALKING:
-		pitch = 1.2
+		pitch = 0.8
 	elif state_machine.current_state == PlayerStateMachine.State.RUNNING:
-		pitch = 1.8
+		pitch = 1.2
 	if (state_machine.current_state == PlayerStateMachine.State.WALKING or state_machine.current_state == PlayerStateMachine.State.RUNNING) and is_on_floor():
 		if current_surface == "grass":
 			if footsteps_audio.stream != grass_sound:
